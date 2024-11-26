@@ -2,9 +2,10 @@ package ProductList;
 
 public class RandProduct extends Product{
 
-    private static final int ID_LEN = 6;
-    private static final int NAME_LEN = 35;
-    private static final int DESCRIPTION_LEN = 75;
+    public static final int ID_LEN = 6;
+    public static final int NAME_LEN = 35;
+    public static final int DESCRIPTION_LEN = 75;
+    public static final int COST_LEN = 8;
 
     public RandProduct(String id, String name, String description, double cost) {
         super(RightPad(id, ID_LEN), RightPad(name, NAME_LEN), RightPad(description, DESCRIPTION_LEN), cost);
@@ -20,6 +21,14 @@ public class RandProduct extends Product{
 
     public String getFormattedDescription() {
         return super.getDescription().trim();
+    }
+
+    public String getFormattedOutput() {
+        return String.format("%s | %s | %s | %s\n", getFormattedID(), getFormattedName(), getFormattedDescription(), super.getCost());
+    }
+
+    public static int getRecordSize() {
+        return ID_LEN + NAME_LEN + DESCRIPTION_LEN + COST_LEN;
     }
 
     static private String RightPad(String string, int length) {
